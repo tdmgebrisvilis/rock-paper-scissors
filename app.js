@@ -16,8 +16,11 @@ function playRound(computerChoice, playerSelection) {
     checkIfRockWon(player, computer);
     checkIfPaperWon(player, computer);
     checkIfScissorsWon(player, computer);
-    let result = [playerScore, computerScore, message]
-    return result;
+    // let result = [playerScore, computerScore, message]
+    // return result;
+    console.log(message);
+    if (playerScore > computerScore) return 'playerWonRound'
+    if (playerScore < computerScore) return 'computerWonRound'
     function checkIfRockWon (player, computer) {
         if (player === 'rock' && computer === 'scissors'){
             message = 'You won this round! Rock beats scissors!';
