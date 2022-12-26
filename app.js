@@ -1,57 +1,34 @@
-// make a function getComputerChoice that will generate a random computer choice.
-// make a function playerSelection that captures the players selection.
-// make a function playSingleRound that takes getComputerChoice and playerSelection as params and return the winner of the round and says what beats what.
-// make a function game, where there are 5 rounds played and winner is reported.
+game();
 
+function game () {
+    let playerScore = 0, computerScore = 0;
+    for (let i = 0; i < 5; i++){
+        const round = playRound(getPlayerSelection, getComputerChoice)
+        if (round === 'playerWonRound') playerScore ++
+        if (round === 'computerWonRound') computerScore ++
+    }
+    console.log(`Your score: ${playerScore}`);
+    console.log(`Computer's score: ${computerScore}`);
+    playerScore > computerScore ? console.log('YOU WIN!') : console.log('YOU LOSE!');
+    if (playerScore > computerScore) return 'YOU WIN! :)'
+    if (playerScore < computerScore) return 'YOU LOSE! :('
+}
 
-function playRound(computerChoice, playerSelection) {
+function playRound(playerSelection, computerChoice) {
     const player = playerSelection();
     const computer = computerChoice();
     console.log(`You chose: ${player}, computer chose: ${computer}`);
-    let playerScore = 0, computerScore = 0, message = '';
+    const playerWon = [], computerWon = [], message = [];
     while (player === computer) {
-        console.log('draw!');
+        message.push('draw!')
+        console.log(message[0]);
         return playRound(computerChoice, playerSelection);
     }
-    checkIfRockWon(player, computer);
-    checkIfPaperWon(player, computer);
-    checkIfScissorsWon(player, computer);
-    // let result = [playerScore, computerScore, message]
-    // return result;
-    console.log(message);
-    if (playerScore > computerScore) return 'playerWonRound'
-    if (playerScore < computerScore) return 'computerWonRound'
-    function checkIfRockWon (player, computer) {
-        if (player === 'rock' && computer === 'scissors'){
-            message = 'You won this round! Rock beats scissors!';
-            return playerScore ++
-        } else if (computer === 'rock' && player === 'scissors'){
-            message = 'You lost this round! Rock beats scissors!';
-            return computerScore ++
-        }
-    }
-    function checkIfPaperWon (player, computer) {
-        if (player === 'paper' && computer === 'rock'){
-            message = 'You won this round! Paper beats rock!';
-            return playerScore ++
-        } else if (computer === 'paper' && player === 'rock'){
-            message = 'You lost this round! Paper beats rock!';
-            return computerScore ++
-        }
-    }
-    function checkIfScissorsWon (player, computer) {
-        if (player === 'scissors' && computer === 'paper'){
-            message = 'You won this round! Scissors beat paper!';
-            return playerScore ++
-        } else if (computer === 'scissors' && player === 'paper'){
-            message = 'You lost this round! Scissors beat paper!';
-            return computerScore ++
-        }
-    }
+    checkWhoWon (player, computer, playerWon, computerWon, message)
+    console.log(message[0]);
+    if (playerWon[0] === true) return 'playerWonRound'
+    if (computerWon[0] === true) return 'computerWonRound'
 }
-
-
-
 
 function getComputerChoice() {
     const possibleChoices = ['rock', 'paper', 'scissors'];
@@ -70,8 +47,42 @@ function getPlayerSelection() {
         : invalidSelection()
     }
     function invalidSelection() {
-        selection = prompt('wrong input, please choose between rock, paper, or scissors');
+        selection = prompt('wrong input, please choose between rock, paper, or scissors')
+        .toLowerCase();
         validateSelection();
     }
 }
 
+function checkWhoWon (player, computer, playerWon, computerWon, message) {
+    checkIfRockWon(player, computer, playerWon, computerWon, message);
+    checkIfPaperWon(player, computer, playerWon, computerWon, message);
+    checkIfScissorsWon(player, computer, playerWon, computerWon, message);
+}
+
+function checkIfRockWon (player, computer, playerWon, computerWon, message) {
+    if (player === 'rock' && computer === 'scissors'){
+        message.push('You won this round! Rock beats scissors!');
+        return playerWon.push(true)
+    } else if (computer === 'rock' && player === 'scissors'){
+        message.push('You lost this round! Rock beats scissors!');
+        return computerWon.push(true)
+    }
+}
+function checkIfPaperWon (player, computer, playerWon, computerWon, message) {
+    if (player === 'paper' && computer === 'rock'){
+        message.push('You won this round! Paper beats rock!');
+        return playerWon.push(true)
+    } else if (computer === 'paper' && player === 'rock'){
+        message.push('You lost this round! Paper beats rock!');
+        return computerWon.push(true)
+    }
+}
+function checkIfScissorsWon (player, computer, playerWon, computerWon, message) {
+    if (player === 'scissors' && computer === 'paper'){
+        message.push('You won this round! Scissors beat paper!');
+        return playerWon.push(true)
+    } else if (computer === 'scissors' && player === 'paper'){
+        message.push('You lost this round! Scissors beat paper!');
+        return computerWon.push(true)
+    }
+}
