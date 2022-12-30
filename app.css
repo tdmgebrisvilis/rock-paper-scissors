@@ -1,0 +1,56 @@
+body {
+    background-color: #ccc5b9;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+}
+h1 {
+    font-size: 50px;
+    margin: 10px 0 0;
+}
+.buttons {
+    /* margin: auto 0; */ 
+    margin-top: 100px;
+}
+.buttons h2 {
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+button {
+    background: rgba(0,0,0,0.4);
+    color: #ffc600;
+    width: 20rem;
+    height: 10rem;
+    font-size: 30px;
+    font-weight: 900;
+    transition: all .07s ease;
+    margin: 0 10px;
+}
+.pressedButton {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+.scores,
+#message {
+    display: flex;
+    justify-content: space-between;
+    gap: 200px;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: 900;
+}
+.scores img {
+    width: 100px;
+}
+#playerScore,
+#computerScore {
+    text-align: center;
+    font-size: 70px;
+}
