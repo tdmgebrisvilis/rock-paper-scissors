@@ -18,8 +18,8 @@ buttons.forEach(button => button.addEventListener('click', play));
 buttons.forEach(button => button.addEventListener('transitionend', removeTransition));
 
 function play(e) {
-    e.path[0].classList.add('pressedButton');
-    const playerSelection = e.path[0].innerText.toLowerCase();
+    e.target.classList.add('pressedButton');
+    const playerSelection = e.target.innerText.toLowerCase();
     const computerChoice = getComputerChoice();
     checkWhoWonRound(playerSelection, computerChoice)
     playerScore.innerText = player.score;
