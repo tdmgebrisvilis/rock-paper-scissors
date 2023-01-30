@@ -1,6 +1,6 @@
 body {
     background-color: #3296b8;
-    background-image: linear-gradient(90deg, #3296b8 0%, #fec657 51%, #ce1141 100%);
+    background-image: linear-gradient(90deg, #3296b8 10%, #fec657 51%, #ce1141 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,6 @@ h1 {
     width: 200px;
     opacity: 80%;
     transition: all .07s ease;
-    /* box-shadow: 0 0 20px rgba(254, 198, 87,0.5); */
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;
@@ -27,6 +26,10 @@ h1 {
 }
 .hoverButton {
     transform: rotate(45deg);
+}
+.blurButton {
+    filter: blur(1.4px);
+
 }
 #paper {
     margin: 0 6rem;

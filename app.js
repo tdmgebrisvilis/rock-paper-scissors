@@ -32,9 +32,12 @@ function play(e) {
 
 function addHover(e) {
     e.target.classList.add('hoverButton')
+    buttons.forEach(button => button.classList.add('blurButton'))
+    e.target.classList.remove('blurButton')
 }
 function removeHover(e){
     e.target.classList.remove('hoverButton')
+    buttons.forEach(button => button.classList.remove('blurButton'))
 }
 
 function removeTransition(e) {
