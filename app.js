@@ -15,16 +15,26 @@ const computer = {
 };
 
 buttons.forEach(button => button.addEventListener('click', play));  
+buttons.forEach(button => button.addEventListener('mouseover', addHover));  
+buttons.forEach(button => button.addEventListener('mouseleave', removeHover));  
 buttons.forEach(button => button.addEventListener('transitionend', removeTransition));
 
 function play(e) {
     e.target.classList.add('pressedButton');
-    const playerSelection = e.target.innerText.toLowerCase();
+    e.target.classList.remove('hoverButton')
+    const playerSelection = e.target.id;
     const computerChoice = getComputerChoice();
     checkWhoWonRound(playerSelection, computerChoice)
     playerScore.innerText = player.score;
     computerScore.innerText = computer.score;
     checkIfGameOver()
+}
+
+function addHover(e) {
+    e.target.classList.add('hoverButton')
+}
+function removeHover(e){
+    e.target.classList.remove('hoverButton')
 }
 
 function removeTransition(e) {
@@ -65,12 +75,15 @@ function checkIfGameOver(){
         message.innerText = 'YOU LOST!'
     }
     if (player.wonGame === true || computer.wonGame === true){
-        buttons.forEach(button => button.disabled = true)
+        buttons.forEach(button => button.removeEventListener('click', play));  
+        buttons.forEach(button => button.removeEventListener('mouseover', addHover));  
         body.appendChild(playAgainButton)
+        playAgainButton.classList.add('resetButton')
         playAgainButton.innerText = 'PLAY AGAIN';
         playAgainButton.addEventListener('click', () => {
             body.removeChild(playAgainButton);
-            buttons.forEach(button => button.disabled = false)
+            buttons.forEach(button => button.addEventListener('click', play));  
+            buttons.forEach(button => button.addEventListener('mouseover', addHover));  
             player.score = 0;
             computer.score = 0;
             player.wonGame = false;

@@ -1,38 +1,46 @@
 body {
-    background-color: #ccc5b9;
+    background-color: #3296b8;
+    background-image: linear-gradient(90deg, #3296b8 0%, #fec657 51%, #ce1141 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
     height: 100vh;
+    font-family: 'Shrikhand', cursive;
+    font-size: 40px;
 }
 h1 {
     font-size: 50px;
-    margin: 10px 0 0;
+    margin: 2rem 0 2rem;
 }
-.buttons {
-    margin-top: 100px;
-}
-.buttons h2 {
-    font-size: 40px;
-    font-weight: 900;
-    text-align: center;
-    margin: 0 0 10px 0;
-}
-button {
-    background: rgba(0,0,0,0.4);
-    color: #ffc600;
-    width: 20rem;
-    height: 10rem;
-    font-size: 30px;
-    font-weight: 900;
+
+.buttons > img {
+    width: 200px;
+    opacity: 80%;
     transition: all .07s ease;
-    margin: 0 10px;
+    /* box-shadow: 0 0 20px rgba(254, 198, 87,0.5); */
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
+.hoverButton {
+    transform: rotate(45deg);
+}
+#paper {
+    margin: 0 6rem;
+}
+
+.buttons {
+    margin-top: 5rem;
+}
+
 .pressedButton {
-    transform: scale(1.1);
+    transform: scale(1.05);
     border-color: #ffc600;
-    box-shadow: 0 0 1rem #ffc600;
+    box-shadow: 0 0 2rem #ffc600;
+    border-radius: 50%;
 }
 
 .scores,
@@ -41,14 +49,28 @@ button {
     justify-content: space-between;
     gap: 200px;
     margin-top: 50px;
-    font-size: 40px;
-    font-weight: 900;
+    font-size: 30px;
 }
 .scores img {
-    width: 100px;
+    width: 80px;
 }
 #playerScore,
 #computerScore {
     text-align: center;
-    font-size: 70px;
+    font-size: 30px;
 }
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+    margin: 2rem 0;
+    font-family: 'Shrikhand', cursive;
+  }
+
+  .resetButton:hover {
+    transform: scale(1.05);
+    border-color: #ffc600;
+    text-shadow: 0 0 1rem #ffc600;
+  }
